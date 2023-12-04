@@ -1,0 +1,492 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+    <div class="card p-3" style="background-color:#e9ecef">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+
+                <b>Meeting Minutes</b>
+                <div>
+                    <i class='fa fa-edit'></i>
+
+                </div>
+            </div>
+        </div>
+        <form id="myform">
+
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input radioBtn" type="radio" name="radioBtn" id="corporate" value="Corporate" onclick="handleClickRadioBtn()">
+                                <label class="form-check-label" for="corporate">Corporate</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioBtn" id="individual" value="Individual" onclick="handleClickRadioBtn()">
+                                <label class="form-check-label radioBtn" for="individual">Individual</label>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row mb-1">
+                            <label for="ddlCustomer" class="col-sm-2 col-form-label">
+                                Customer Name
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="ddlCustomer" required for="customer">
+                                    <option>select customer name</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-1">
+                            <label for="mettingDate" class="col-sm-2 col-form-label">
+                                Date
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control" id="mettingDate" >
+
+                            </div>
+                            <label for="mettingTime" class="col-sm-2 col-form-label">
+                                Time
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="time" class="form-control" id="mettingTime" >
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mb-1">
+                            <label for="mettingPlace" class="col-sm-2 col-form-label">
+                                Meeting Place
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="mettingPlace" id="mettingPlace" required placeholder="metting place">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-1">
+                            <label for="clientAttendant" class="col-sm-2 col-form-label">
+                                Attends From Client Side
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="clientAttendant" id="clientAttendant" required placeholder="Present client side"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <label for="hostSideAttend" class="col-sm-2 col-form-label">
+                                Attends From Host Side
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="hostSideAttend" id="hostSideAttend" required placeholder="Present self side"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row mb-1">
+                            <label for="mettingAgenda" class="col-sm-2 col-form-label">
+                                Meeting Agenda
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="mettingAgenda" id="mettingAgenda" required placeholder="Meeting Agenda"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-1">
+                            <label for="mettingDiscussion" class="col-sm-2 col-form-label">
+                                Meeting Discussion
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="mettingDiscussion" id="mettingDiscussion" required placeholder="Meeting Discussion"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-1">
+                            <label for="mettingDecision" class="col-sm-2 col-form-label">
+                                Meeting Decision
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="mettingDecision" id="mettingDecision" required placeholder="Meeting Decision"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3 p-3">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group row mb-1">
+                            <label for="ddlProductService" class="col-sm-2 col-form-label">
+                                Interested Product/Service
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select class="form-control" required id="ddlProductService">
+                                    <option>select product/service interested</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <label for="quantity" class="col-sm-2 col-form-label">
+                                Quantity
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" required id="quantity">
+                            </div>
+                            <label for="unit" class="col-sm-2 col-form-label">
+                                Unit
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="text" readonly class="form-control" id="unit">
+                                <input type="hidden" class="form-control unit" id="hiddenIndex" >
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <button class="btn btn-sm" id="add-services" type="button" style="background-color:silver">
+                        <i class='fa fa-plus-square'></i>
+
+                        Add
+                    </button>
+                    <button class="btn btn-sm" id="edit-services" type="button" style="background-color: silver">
+                        <i class='fa fa-edit'></i>
+                        Update
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="card mt-3 mb-3 p-3" style="height:200px;">
+                <div class="row">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Interested Product/Service Name</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th style="width:5%">Edit</th>
+                                <th style="width:5%">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="d-flex mt-5 mb-3" style="gap:5px;">
+                <div>
+                    <button class="btn btn-sm" type="button" onclick="handleSave()" style="background-color:silver">
+                        <i class='fa fa-save'></i>
+
+                        Save
+                    </button>
+                </div>
+                <div>
+                    <button class="btn btn-sm" style="background-color:silver">
+                        <i class='fa fa-refresh'></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#edit-services").css("display", "none");
+            LoadProductAndService();
+            
+
+            $("#edit-services").click(function (event) {
+                event.preventDefault();
+                var table = document.getElementById('table');
+                var sl = parseInt($("#hiddenIndex").val()) + 1;
+                var servcies = $("#ddlProductService option:selected").text();
+                var unit = $("#unit").val();
+                var quantity = $("#quantity").val();
+
+                var table = document.getElementById('table');
+                var row = table.rows[parseInt($("#hiddenIndex").val())];
+
+                row.cells[0].innerHTML = sl;
+                row.cells[1].innerHTML = servcies;
+                row.cells[2].innerHTML = unit;
+                row.cells[3].innerHTML = quantity;
+
+                $("#ddlProductService").val("-1");
+                $("#unit").val("");
+                $("#quantity").val("");
+
+                $("#edit-services").css("display", "none");
+                $("#hiddenIndex").val("");
+                $("#add-services").css("display", "block");
+
+            });
+
+
+            $("#ddlProductService").change(function () {
+                var serviceName = $(this).find("option:selected").val();
+                if (serviceName !== -1) {
+                    $.ajax({
+                        url: "/api/GetUnitByService?serviceName=" + serviceName,
+                        type: "GET",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        async: true,
+                        success: function (data, status) {
+                            if (data) {
+                                $("#unit").val(data.unit)
+                            } else {
+                                $("#unit").val("")
+
+                            }
+                        }
+
+                    })
+                }
+            });
+
+
+
+            $("#add-services").click(function (event) {
+                event.preventDefault();
+                var table = document.getElementById('table');
+                var sl = table.rows.length + 1;
+                var servcies = $("#ddlProductService option:selected").text();
+
+                var unit = $("#unit").val();
+                var quantity = $("#quantity").val();
+
+
+                if (servcies !== "0" && unit !== "" && quantity !== "") {
+                    var newRow = $("<tr>");
+                    var cols = '';
+
+                    cols += `<td>${sl}</td><td>
+                                ${servcies}
+                            </td>
+                            <td>
+                                ${unit}
+                            </td>
+                            <td>
+                                ${quantity}
+                            </td>
+                            <td>
+                            <div class="col-md-2">
+                                <button class="btn btn-sm btn-warning" id="editRow" >Edit</button>
+                            </div>
+                            </td>
+                            <td>
+                            <div class="col-md-2">
+                                <button class="btn btn-sm btn-danger" id="deleteRow">Remove</button>
+                            </div>
+                        </td>`;
+
+                    newRow.append(cols);
+                    $("#table").append(newRow);
+
+                    $("#ddlProductService").val("-1");
+                    $("#unit").val("");
+                    $("#quantity").val("");
+
+                } else {
+                    alert("Please fill all requirements!!!");
+                    return;
+                }
+
+
+            });
+
+            $("#table").on("click",
+                "#deleteRow",
+                function (event) {
+                    event.preventDefault();
+                    $(this).closest("tr").remove();
+
+
+                    var table = document.getElementById('table');
+                    for (var i = 0; i < table.rows.length; i++) {
+                        var row = table.rows[i];
+                        row.cells[0].innerHTML = i + 1;
+                    }
+
+                    $("#hiddenIndex").val("");
+                    $("#ddlProductService").val("-1");
+                    $("#unit").val("");
+                    $("#quantity").val("");
+
+                    $("#edit-services").css("display", "none");
+                    $("#add-services").css("display", "block");
+
+                });
+
+
+            $("#table").on("click",
+                "#editRow",
+                function (event) {
+                    event.preventDefault();
+                    $("#edit-services").css("display", "block");
+                    $("#add-services").css("display", "none");
+                    $("#hiddenIndex").val("");
+                    console.log($(this).closest("tr")[0].cells[1].innerText)
+
+                    $("#ddlProductService").val($(this).closest("tr")[0].cells[1].innerText);
+                    
+                    $("#unit").val($(this).closest("tr")[0].cells[2].innerText);
+                    $("#quantity").val($(this).closest("tr")[0].cells[3].innerText);
+
+                    var row_index = $(this).closest("tr").index();
+
+                    $("#hiddenIndex").val(row_index);
+
+                });
+
+
+
+
+
+        });
+        function handleClickRadioBtn() {
+            var radioBtnVal = $("input[type='radio']:checked").val();
+            if (radioBtnVal === "Corporate") {
+                $.ajax({
+                    url: "/api/GetAllCorporateCustomer",
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    success: function (data, status) {
+                        var customer = '<option value="-1">select customer name</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            customer += '<option value="' + data[i].id + '">' + data[i].customerName + '</option>';
+                        }
+                        $("#ddlCustomer").html(customer);
+
+                    }
+
+                })
+            } else if (radioBtnVal === "Individual") {
+                $.ajax({
+                    url: "/api/GetAllIndividualCustomer",
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    success: function (data, status) {
+                        var customer = '<option value="-1">select customer name</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            customer += '<option value="' + data[i].id + '">' + data[i].customerName + '</option>';
+                        }
+                        $("#ddlCustomer").html(customer);
+
+                    }
+
+                })
+            }
+        }
+
+        function LoadProductAndService() {
+            $.ajax({
+                url: "/api/GetAllProductAndService",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                async: true,
+                success: function (data, status) {
+
+                    var productService = '<option value="-1">select product/service interested</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        productService += '<option value="' + data[i].serviceName + '">' + data[i].serviceName + '</option>';
+                    }
+                    $("#ddlProductService").html(productService);
+
+                }
+
+            })
+        }
+      
+        function handleSave() {
+
+            var customerName = $("#ddlCustomer option:selected").text();
+            var meetingAgenda = $("#mettingAgenda").val();
+            var meetingPlace = $("#mettingPlace").val();
+            var meetingDate = $("#mettingDate").val();
+            var meetingTime = $("#mettingTime").val();
+            var attendsFromClientSide = $("#clientAttendant").val();
+            var attendsFromHostSide = $("#hostSideAttend").val();
+            var meetingDiscussion = $("#mettingDiscussion").val();
+            var meetingDecision = $("#mettingDecision").val();
+            
+
+            var masterDetails = new Array();
+            var table = document.getElementById('table');
+            for (var i = 0; i < table.rows.length; i++) {
+                var row = table.rows[i];
+                var masterD = {};
+                masterD.ServiceName = row.cells[1].innerText;
+                masterD.Unit = row.cells[2].innerText;
+                masterD.Quantity = row.cells[3].innerText;
+
+                if (masterD.ServiceName && masterD.Unit && masterD.Quantity) {
+                    masterDetails.push(masterD);
+
+                }
+
+            }
+            var obj = {
+                customerName, attendsFromClientSide, meetingAgenda, meetingTime, meetingDecision, meetingPlace, attendsFromHostSide, meetingDiscussion, meetingDate
+            };
+
+
+            if(obj !==null && masterDetails.length>0){
+                $.ajax({
+                    url: "/api/PostMetting",
+                    type: "POST",
+                    data: JSON.stringify({ info: obj, agreement: masterDetails }),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    success: function (oData) {
+                        alert("Data Saved Successfully");
+                        location.reload();
+
+                    },
+                    error: function (error) {
+                        alert("Data Saved Failed");
+                    }
+
+                })
+          }else{
+              alert("Please provide all informations!!!")
+          }
+
+
+        }
+
+
+    </script>
+}
